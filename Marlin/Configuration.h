@@ -59,7 +59,7 @@
 //===========================================================================
 
 // Core XY
-//#define SAPPHIRE_PRO
+#define SAPPHIRE_PRO
 //#define SAPPHIRE_PLUS
 
 // Cartesian
@@ -72,19 +72,21 @@
 // Probe Settings
 
 
-//#define BL_TOUCH                 // Enable BLTouch Settings
+#define BL_TOUCH                 // Enable BLTouch Settings
 #if ENABLED(BL_TOUCH)
-  //#define LOW_RES                  // 3x3 Grid 
-  //#define HI_RES                   // 5x5 Grid
+  //#define LOW_RES                  // 3x3 Grid
+  #define HI_RES                   // 5x5 Grid
   //#define MAX_RES                  // 7x7 Grid
   //#define BL_TOUCH_HIGH_SPEED      // Only for BLTouch 3.0 and 3.1 Probe Pin does not pull in when moving in XY. Use at your own risk!
+  #define Z_CLEARANCE_BL	5
+  #define MULTIPLE_PROBING_BL	3
 #endif
-  
+
 
 // Specify a Probe Offsetposition { X, Y, Z }
 #define OFFSET_X 0              // - Left   |   Right +
-#define OFFSET_Y 0              // - Front  |   Back +
-#define OFFSET_Z 0              // - Nozzle ist Higher as the Probe 0 Point |  + Really? you did somthing wrong.
+#define OFFSET_Y -34.5          // - Front  |   Back +
+#define OFFSET_Z -1.2             // - Nozzle ist Higher as the Probe 0 Point |  + Really? you did somthing wrong.
 
 
 // Motion Control Settings
@@ -98,7 +100,7 @@
 
 // Linear Pressure Control
 //Use at your own risk! It can cause extruder errors...
- 
+
 //#define LINEAR_PRESSURE_CONTROL
 #if ENABLED(LINEAR_PRESSURE_CONTROL)
   #define LINEAR_PRESSURE_CONTROL_VALUE   0
@@ -133,8 +135,8 @@
 
   //#define INVERT_X
   //#define INVERT_Y
-  #define INVERT_Z 
-  #define INVERT_E0 
+  #define INVERT_Z
+  #define INVERT_E0
   //#define INVERT_Z2
   //#define INVERT_E1
 #endif
@@ -142,10 +144,10 @@
 // Custom Axis Steps Per MM
 // If you have calibrated the extruder before, you can enter the steps here, also be specified individually for the other axes.
 
-//#define STEPS_X         0  // Normally no change needed...
-//#define STEPS_Y         0  // Normally no change needed...
-//#define STEPS_Z         0  // Normally no change needed...
-//#define STEPS_E0        0
+#define STEPS_X         80.2  // Normally no change needed...
+#define STEPS_Y         80.0  // Normally no change needed...
+#define STEPS_Z         1632.65  // Normally no change needed...
+#define STEPS_E0        421.05
 
 // Custom Bed Size
 // If you have a different size of a print bed, enter it here
@@ -156,13 +158,13 @@
   #define Z_BED_SIZE_CUSTOM 200
 #endif
 
-// Custom PID & TEMP SENSOR Settings  
+// Custom PID & TEMP SENSOR Settings
 // Normally no change necessary, unless it does not maintain the set temperature + -1 °
-//#define CUSTOM_HOTEND_PID // HOTEND
+#define CUSTOM_HOTEND_PID // HOTEND
   #if ENABLED(CUSTOM_HOTEND_PID)
-    #define CUSTOM_Kp 1
-    #define CUSTOM_Ki 1
-    #define CUSTOM_Kd 1
+    #define CUSTOM_Kp 10.73
+    #define CUSTOM_Ki 0.58
+    #define CUSTOM_Kd 49.47
   #endif
 
 //#define CUSTOM_BED_PID    // HEATED BED
@@ -219,7 +221,7 @@
 #if ENABLED (SAPPHIRE_GRAPHICAL_TFT_CUSTOM)
 #define COLOR_CUSTOM_0 0xFFFF // UI
 #define COLOR_CUSTOM_1 0xFFFF // BACKGROUND
-#define COLOR_CUSTOM_2 0xFFFF // CANCEL 
+#define COLOR_CUSTOM_2 0xFFFF // CANCEL
 #define COLOR_CUSTOM_3 0xFFFF // ARROWS
 #define COLOR_CUSTOM_4 0xFFFF // OK/MENU
 #endif
@@ -303,7 +305,7 @@
  */
   #if ANY (SAPPHIRE_PRO, SAPPHIRE_PLUS, BLUER)
     //SAPPHIRE_PRO, SAPPHIRE_PLUS, BLUER
-    #define BAUDRATE 115200 
+    #define BAUDRATE 115200
   #else
     //No Preset
     #define BAUDRATE 250000
@@ -921,7 +923,7 @@
     #define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
     #define Z_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
-  #else 
+  #else
     //Sapphire Pro,Plus & Bluer & Mechanical Endstops
     #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
     #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
@@ -1018,7 +1020,7 @@
     //#define E4_DRIVER_TYPE A4988
     //#define E5_DRIVER_TYPE A4988
     //#define E6_DRIVER_TYPE A4988
-    //#define E7_DRIVER_TYPE A4988 
+    //#define E7_DRIVER_TYPE A4988
   #endif
 
 
@@ -1066,7 +1068,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 
-#if ENABLED(SAPPHIRE_PRO) 
+#if ENABLED(SAPPHIRE_PRO)
     //Sapphire Pro
     #ifndef STEPS_X
       #define STEPS_X     80
